@@ -1,0 +1,145 @@
+[
+	{"id":"progressbg-t", "dst":[
+		{"x":2, "y":518, "w":28, "h":16}
+	]},
+	{"id":"progressbg-c", "dst":[
+		{"x":2, "y":148, "w":28, "h":370}
+	]},
+	{"id":"progressbg-b", "dst":[
+		{"x":2, "y":132, "w":28, "h":16}
+	]},
+	{"id":"progressfg", "blend":2, "dst":[
+		{"x":6, "y":506, "w":20, "h":24}
+	]},
+	{"id":"progressbg-t", "dst":[
+		{"x":1250, "y":518, "w":28, "h":16}
+	]},
+	{"id":"progressbg-c", "dst":[
+		{"x":1250, "y":148, "w":28, "h":370}
+	]},
+	{"id":"progressbg-b", "dst":[
+		{"x":1250, "y":132, "w":28, "h":16}
+	]},
+	{"id":"progressfg", "blend":2, "dst":[
+		{"x":1254, "y":506, "w":20, "h":24}
+	]},
+
+
+	{"id":"value-lanecover", "op":[270],"dst":[
+		{"time":0, "x":617, "y":500, "w":15, "h":16}
+	]},
+
+	{"id":"loading-bg", "op":[80], "dst":[
+		{"x":104, "y":226, "w":456, "h":28}
+	]},
+	{"id":"loading-fg", "loop":0, "op":[80], "dst":[
+		{"time":0, "x":104, "y":226, "w":456, "h":28},
+	]},
+	{"id":"loading-overlay-L", "op":[80], "dst":[
+		{"x":90, "y":212, "w":28, "h":56}
+	]},
+	{"id":"loading-overlay-C", "op":[80], "dst":[
+		{"x":118, "y":212, "w":428, "h":56}
+	]},
+	{"id":"loading-overlay-R", "op":[80], "dst":[
+		{"x":546, "y":212, "w":28, "h":56}
+	]},
+	{"id":"loading-n", "op":[80], "dst":[
+		{"x":299, "y":232, "w":15, "h":16}
+	]},
+	{"id":"percent", "op":[80], "dst":[
+		{"x":347, "y":232, "w":15, "h":16}
+	]},
+	{"id":"loading-bg", "op":[80], "dst":[
+		{"x":720, "y":226, "w":456, "h":28}
+	]},
+	{"id":"loading-fg", "loop":0, "op":[80], "dst":[
+		{"time":0, "x":720, "y":226, "w":456, "h":28},
+	]},
+	{"id":"loading-overlay-L", "op":[80], "dst":[
+		{"x":706, "y":212, "w":28, "h":56}
+	]},
+	{"id":"loading-overlay-C", "op":[80], "dst":[
+		{"x":734, "y":212, "w":428, "h":56}
+	]},
+	{"id":"loading-overlay-R", "op":[80], "dst":[
+		{"x":1162, "y":212, "w":28, "h":56}
+	]},
+	{"id":"loading-n", "op":[80], "dst":[
+		{"x":915, "y":232, "w":15, "h":16}
+	]},
+	{"id":"percent", "op":[80], "dst":[
+		{"x":963, "y":232, "w":15, "h":16}
+	]},
+
+	{"id":"loading-overlay-L", "loop":-1, "timer":40, "dst":[
+		{"x":90, "y":212, "w":28, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-C", "loop":-1, "timer":40, "dst":[
+		{"x":118, "y":212, "w":428, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-R", "loop":-1, "timer":40, "dst":[
+		{"x":546, "y":212, "w":28, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-L", "loop":-1, "timer":40, "dst":[
+		{"x":90, "y":212, "w":28, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-C", "loop":-1, "timer":40, "dst":[
+		{"x":118, "y":212, "w":428, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-R", "loop":-1, "timer":40, "dst":[
+		{"x":546, "y":212, "w":28, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"ready", "loop":-1, "timer":40, "dst":[
+		{"time":0, "x":292, "y":232, "w":75, "h":16},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-L", "loop":-1, "timer":40, "dst":[
+		{"x":706, "y":212, "w":28, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-C", "loop":-1, "timer":40, "dst":[
+		{"x":734, "y":212, "w":428, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-R", "loop":-1, "timer":40, "dst":[
+		{"x":1162, "y":212, "w":28, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-L", "loop":-1, "timer":40, "dst":[
+		{"x":706, "y":212, "w":28, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-C", "loop":-1, "timer":40, "dst":[
+		{"x":734, "y":212, "w":428, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"loading-overlay-R", "loop":-1, "timer":40, "dst":[
+		{"x":1162, "y":212, "w":28, "h":56},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]},
+	{"id":"ready", "loop":-1, "timer":40, "dst":[
+		{"time":0, "x":908, "y":232, "w":75, "h":16},
+		{"time":500, "a":255},
+		{"time":1000, "a":0}
+	]}
+]

@@ -1,0 +1,36 @@
+[
+	{"id":"minbpm", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":4, "align":2, "ref":91},
+	{"id":"bpm", "src":3, "x":0, "y":32, "w":220, "h":24, "divx":10, "digit":4, "align":2, "ref":160},
+	{"id":"maxbpm", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":4, "align":2, "ref":90},
+	{"id":"time-m", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":2, "ref":163},
+	{"id":"time-s", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":2, "padding":1, "ref":164},
+	{"id":"hispeed-n", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":2, "ref":310},
+	{"id":"hispeed-f", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":2, "padding":1, "ref":311},
+	{"id":"duration", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":4, "align":2, "ref":312},
+	{"id":"gauge-n", "src":3, "x":0, "y":32, "w":242, "h":24, "divx":11, "digit":3, "ref":107},
+	{"id":"score-rate", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":4, "ref":102},
+	{"id":"score-now", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":5, "ref":71},
+	{"id":"score-best", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":5, "ref":150},
+	{"id":"score-target", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":5, "ref":121},
+	{"id":"maxcombo", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":5, "ref":105},
+
+	{"id":"jc-pg", "src":3, "x":0, "y":0, "w":110, "h":11, "divx":11, "digit":4, "ref":110},
+	{"id":"jc-gr", "src":3, "x":0, "y":0, "w":110, "h":11, "divx":11, "digit":4, "ref":111},
+	{"id":"jc-gd", "src":3, "x":0, "y":0, "w":110, "h":11, "divx":11, "digit":4, "ref":112},
+	{"id":"jc-bd", "src":3, "x":0, "y":0, "w":110, "h":11, "divx":11, "digit":4, "ref":113},
+	{"id":"jc-pr", "src":3, "x":0, "y":0, "w":110, "h":11, "divx":11, "digit":4, "ref":114},
+	{"id":"jc-ms", "src":3, "x":0, "y":0, "w":110, "h":11, "divx":11, "digit":4, "ref":420},
+	
+	{"id":"value-lanecover", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":3, "ref":14},
+	
+	{"id":"judgen-pg", "src":4, "x":240, "y":0, "w":450, "h":192, "divx":10, "divy":4, "digit":6, "ref":75, "cycle":132},
+	{"id":"judgen-gr", "src":4, "x":240, "y":192, "w":450, "h":96, "divx":10, "divy":2, "digit":6, "ref":75, "cycle":132},
+	{"id":"judgen-gd", "src":4, "x":240, "y":288, "w":450, "h":96, "divx":10, "divy":2, "digit":6, "ref":75, "cycle":132},
+
+	{"id":"judgems-1pp", "src":4, "x":80, "y":480, "w":180, "h":32, "divx":12, "divy":2, "digit":4, "ref":525},
+	{"id":"judgems-1pg", "src":4, "x":260, "y":480, "w":180, "h":32, "divx":12, "divy":2, "digit":4, "ref":525},
+	{"id":"judgems-2pp", "src":4, "x":80, "y":480, "w":180, "h":32, "divx":12, "divy":2, "digit":4, "ref":526},
+	{"id":"judgems-2pg", "src":4, "x":260, "y":480, "w":180, "h":32, "divx":12, "divy":2, "digit":4, "ref":526},
+
+	{"id":"loading-n", "src":3, "x":0, "y":12, "w":150, "h":16, "divx":10, "digit":3, "ref":165}
+]
