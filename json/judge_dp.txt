@@ -29,6 +29,30 @@
 			]}
 		]},
 		{"if": [[942,944]], "values":[
+			{"id":"judgef-pg", "loop":-1, "timer":46 ,"offset":3, "dst":[
+				{"time":0, "x":212, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-gr", "loop":-1, "timer":46 ,"offset":3, "dst":[
+				{"time":0, "x":212, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-gd", "loop":-1, "timer":46 ,"offset":3, "dst":[
+				{"time":0, "x":212, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-bd", "loop":-1, "timer":46 ,"offset":3, "dst":[
+				{"time":0, "x":222, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-pr", "loop":-1, "timer":46 ,"offset":3, "dst":[
+				{"time":0, "x":222, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-ms", "loop":-1, "timer":46 ,"offset":3, "dst":[
+				{"time":0, "x":222, "y":340, "w":220, "h":48},
+				{"time":500}
+			]}
 		]}
 	],
 	"numbers":[
@@ -87,6 +111,30 @@
 			]}
 		]},
 		{"if": [[942,944]], "values":[
+			{"id":"judgef-pg", "loop":-1, "timer":47 ,"offset":3, "dst":[
+				{"time":0, "x":828, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-gr", "loop":-1, "timer":47 ,"offset":3, "dst":[
+				{"time":0, "x":828, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-gd", "loop":-1, "timer":47 ,"offset":3, "dst":[
+				{"time":0, "x":828, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-bd", "loop":-1, "timer":47 ,"offset":3, "dst":[
+				{"time":0, "x":838, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-pr", "loop":-1, "timer":47 ,"offset":3, "dst":[
+				{"time":0, "x":838, "y":340, "w":220, "h":48},
+				{"time":500}
+			]},
+			{"id":"judgef-ms", "loop":-1, "timer":47 ,"offset":3, "dst":[
+				{"time":0, "x":838, "y":340, "w":220, "h":48},
+				{"time":500}
+			]}
 		]}
 	],
 	"numbers":[

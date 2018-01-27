@@ -125,30 +125,46 @@
 		{"if": [941], "values":[
 			{"include": "json/dsts_lane_24k_dpt.txt"},
 			{"include": "json/dsts_panel_1t.txt"},
-			{"include": "json/dsts_progress_dpt.txt"},
+			{"id":"value-lanecover", "op":[270],"dst":[
+				{"time":0, "x":617, "y":500, "w":15, "h":16}
+			]},
+			{"include": "json/dsts_progress_sp1t.txt"},
+			{"include": "json/dsts_progress_sp2t.txt"},
 			{"include": "fullcombo/24kHD/*/dsts1t.txt"},
 			{"include": "fullcombo/24kHD/*/dsts2t.txt"}
 		]},
 		{"if": [942], "values":[
-			{"include": "json/dsts_lane_24k_dpt.txt"},
-			{"include": "json/dsts_panel_1t.txt"},
-			{"include": "json/dsts_progress_dpt.txt"},
-			{"include": "fullcombo/24kHD/*/dsts1t.txt"},
-			{"include": "fullcombo/24kHD/*/dsts2t.txt"}
+			{"include": "json/dsts_lane_24k_dpb.txt"},
+			{"include": "json/dsts_panel_1b.txt"},
+			{"id":"value-lanecover", "op":[270],"dst":[
+				{"time":0, "x":617, "y":680, "w":15, "h":16}
+			]},
+			{"include": "json/dsts_progress_sp1b.txt"},
+			{"include": "json/dsts_progress_sp2b.txt"},
+			{"include": "fullcombo/24kHD/*/dsts1b.txt"},
+			{"include": "fullcombo/24kHD/*/dsts2b.txt"}
 		]},
 		{"if": [943], "values":[
 			{"include": "json/dsts_lane_24k_dpt.txt"},
 			{"include": "json/dsts_panel_2t.txt"},
-			{"include": "json/dsts_progress_dpt.txt"},
+			{"id":"value-lanecover", "op":[270],"dst":[
+				{"time":0, "x":617, "y":500, "w":15, "h":16}
+			]},
+			{"include": "json/dsts_progress_sp1t.txt"},
+			{"include": "json/dsts_progress_sp2t.txt"},
 			{"include": "fullcombo/24kHD/*/dsts1t.txt"},
 			{"include": "fullcombo/24kHD/*/dsts2t.txt"}
 		]},
 		{"if": [944], "values":[
-			{"include": "json/dsts_lane_24k_dpt.txt"},
-			{"include": "json/dsts_panel_2t.txt"},
-			{"include": "json/dsts_progress_dpt.txt"},
-			{"include": "fullcombo/24kHD/*/dsts1t.txt"},
-			{"include": "fullcombo/24kHD/*/dsts2t.txt"}
+			{"include": "json/dsts_lane_24k_dpb.txt"},
+			{"include": "json/dsts_panel_2b.txt"},
+			{"id":"value-lanecover", "op":[270],"dst":[
+				{"time":0, "x":617, "y":680, "w":15, "h":16}
+			]},
+			{"include": "json/dsts_progress_sp1b.txt"},
+			{"include": "json/dsts_progress_sp2b.txt"},
+			{"include": "fullcombo/24kHD/*/dsts1b.txt"},
+			{"include": "fullcombo/24kHD/*/dsts2b.txt"}
 		]},
 		{"include": "frame/HD/*/dsts_fore.txt"},
 		{"include": "json/dsts_fore.txt"}
