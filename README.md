@@ -5,7 +5,7 @@ a playing skin for beatoraja
 
 ## Requirements
 
-* [beatoraja](https://github.com/exch-bms2/beatoraja) 0.5.3, 0.6.* or later (0.5.2 is not supported)
+* [beatoraja](https://github.com/exch-bms2/beatoraja) 0.5.7 or later (0.5.5, Chroma 0.5.6 is not supported)
 
 
 ## Skin Types
@@ -22,8 +22,8 @@ a playing skin for beatoraja
   * Hybrid Lane: similar to Half Lane, but lines of black keys are displayed thick for better visibility.
   * Separate Lane: similar to IIDX. (less recommended)
 * Lane/Object/Laser: the following combinations are recommended.
-  * Blue{D,L}/ColdRed/Blue(S)
-  * Pink{D,L}/WarmBlue/Pink(S)
+  * Blue{D,L}/ColdRed/Blue
+  * Pink{D,L}/WarmBlue/Pink
   * Brown{D,L}/any/any
 
 Some other options are not implemented yet.
