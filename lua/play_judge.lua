@@ -1,4 +1,5 @@
 
+require("lua.lua_ext")
 local util = require("lua.play_util")
 local prop = require("lua.play_properties")
 local consts = require("lua.play_consts")
@@ -50,7 +51,7 @@ function judge.load(skin_type, resolution, src_id_judge)
 		{id = "judgen-gd", src = src_id_judge, x = 240, y = 288, w = 450, h = 96, divx = 10, divy = 2, digit = 6, ref = 75, cycle = 132},	
 	}
 	for i, judge in ipairs(judges) do
-		util.append_all(skin.values, {
+		table.append_all(skin.values, {
 			{id = "judgems-"..i.."pp", src = src_id_judge, x = 80, y = 480, w = 180, h = 32, divx = 12, divy = 2, digit = 4, ref = 525 + judge.index},
 			{id = "judgems-"..i.."pg", src = src_id_judge, x = 260, y = 480, w = 180, h = 32, divx = 12, divy = 2, digit = 4, ref = 525 + judge.index},
 		})
@@ -129,11 +130,11 @@ function judge.load(skin_type, resolution, src_id_judge)
 
 	skin.destinations = {}
 	for i, judge in ipairs(judges) do
-		util.append_all(skin.destinations, {
+		table.append_all(skin.destinations, {
 			{id = judge.id},
 		})
 		if prop.current.is_judge_detail_early_late() then
-			util.append_all(skin.destinations, {
+			table.append_all(skin.destinations, {
 				{id = "judge-early", loop = -1, timer = timer_show_judge(judge), op = {op_early(judge)}, offset = 3, dst = {
 					{time = 0, x = judge.x + 76, y = judge_y + 56, w = 73, h = 16},
 					{time = 500}
@@ -145,7 +146,7 @@ function judge.load(skin_type, resolution, src_id_judge)
 			})
 		end
 		if prop.current.is_judge_detail_ms() then
-			util.append_all(skin.destinations, {
+			table.append_all(skin.destinations, {
 				{id = "judgems-"..i.."pp", loop = -1, timer = timer_show_judge(judge), op = {op_perfect(judge)}, offset = 3, dst = {
 					{time = 0, x = judge.x + 76, y = judge_y + 56, w = 15, h = 16},
 					{time = 500}

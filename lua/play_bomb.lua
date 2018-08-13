@@ -1,5 +1,7 @@
 
+require("lua.lua_ext")
 local util = require("lua.play_util")
+local skin_values = require("lua.skin_values")
 local prop = require("lua.play_properties")
 local consts = require("lua.play_consts")
 local bomb = {}
@@ -26,14 +28,14 @@ function bomb.load(skin_type, resolution, src_id_bomb, src_id_hold, lane_geometr
 	end
 
 	for i = 1, keys_count do
-		util.append_all(skin.images, {
-			{id = id_bomb(i), src = src_id_bomb, x = 0, y = 0, w = 2048, h = 2048, divx = 8, divy = 8, timer = util.timer_key_bomb(i), cycle = 1067},
-			{id = id_hold(i), src = src_id_hold, x = 0, y = 0, w = 1024, h = 1024, divx = 4, divy = 4, timer = util.timer_key_hold(i), cycle = 267},
+		table.append_all(skin.images, {
+			{id = id_bomb(i), src = src_id_bomb, x = 0, y = 0, w = 2048, h = 2048, divx = 8, divy = 8, timer = skin_values.timer_key_bomb(i), cycle = 1067},
+			{id = id_hold(i), src = src_id_hold, x = 0, y = 0, w = 1024, h = 1024, divx = 4, divy = 4, timer = skin_values.timer_key_hold(i), cycle = 267},
 		})
-		util.append_all(skin.destinations, {
+		table.append_all(skin.destinations, {
 			{
 				id = id_bomb(i),
-				timer = util.timer_key_bomb(i),
+				timer = skin_values.timer_key_bomb(i),
 				loop = -1, blend = 2, offset = 3,
 				dst = {
 					{time = 0,
@@ -46,7 +48,7 @@ function bomb.load(skin_type, resolution, src_id_bomb, src_id_hold, lane_geometr
 			},
 			{
 				id = id_hold(i),
-				timer = util.timer_key_hold(i),
+				timer = skin_values.timer_key_hold(i),
 				blend = 2, offset = 3,
 				dst = {
 					{time = 0,

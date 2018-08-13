@@ -1,4 +1,5 @@
 
+require("lua.lua_ext")
 local util = require("lua.play_util")
 local prop = require("lua.play_properties")
 local consts = require("lua.play_consts")
@@ -131,7 +132,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 		geo.frame_bga_t = geo.frame_bga_y + 480
 		if prop.current.get_play_side_h() == 1 then
 			geo.frame_bga_x = 720
-			util.append_all(skin.dst_base, {
+			table.append_all(skin.dst_base, {
 				{id = skin.images.frame_1pL.id,  dst = {{ x = 0,    y = geo.frame_main_y, w = 41, h = 540 }}},
 				{id = skin.images.frame_bgaT.id, dst = {{ x = 720,  y = geo.frame_bga_t, w = 480, h = 32 }}},
 				{id = skin.images.frame_bgaB.id, dst = {{ x = 720,  y = geo.frame_main_y, w = 480, h = 28 }}},
@@ -140,7 +141,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 			})
 		else
 			geo.frame_bga_x = 80
-			util.append_all(skin.dst_base, {
+			table.append_all(skin.dst_base, {
 				{id = skin.images.frame_2pR.id,  dst = {{ x = 1239, y = geo.frame_main_y, w = 41, h = 540 }}},
 				{id = skin.images.frame_bgaT.id, dst = {{ x = 80,   y = geo.frame_bga_t, w = 480, h = 32 }}},
 				{id = skin.images.frame_bgaB.id, dst = {{ x = 80,   y = geo.frame_main_y, w = 480, h = 28 }}},
@@ -155,7 +156,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 		else
 			y = 180
 		end
-		util.append_all(skin.dst_base, {
+		table.append_all(skin.dst_base, {
 			{id = skin.images.frame_1pL.id, dst = {{ x = 0, y = y, w = 41, h = 540 }}},
 			{id = skin.images.frame_2pR.id, dst = {{ x = 1239, y = y, w = 41, h = 540 }}},
 			{id = skin.images.frame_dpC.id, dst = {{ x = 624, y = y, w = 32, h = 540 }}}
@@ -322,7 +323,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 		end
 
 		if prop.current.get_play_side_v() == 1 then
-			util.append_all(skin.dst_panel, {
+			table.append_all(skin.dst_panel, {
 				{ id = skin.images.panelT.id, dst = {
 					{ x = 0, y = 536, w = 1280, h = 184 }
 				}},
@@ -334,7 +335,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 				}},
 			})
 		else
-			util.append_all(skin.dst_panel, {
+			table.append_all(skin.dst_panel, {
 				{ id = skin.images.panelB.id, dst = {
 					{ x = 0, y = 0, w = 1280, h = 184 }
 				}},
@@ -347,7 +348,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 			})
 		end
 
-		util.append_all(skin.dst_panel, {
+		table.append_all(skin.dst_panel, {
 			{id = skin.values.min_bpm.id, dst = {
 				{x = geo.minbpm_x, y = geo.mbpm_y, w = 15, h = 16}
 			}},
@@ -437,7 +438,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 			}},
 		})
 		if prop.current.shows_score_graph() then
-			util.append_all(skin.dst_panel, {
+			table.append_all(skin.dst_panel, {
 				{id = skin.images.graph_bg.id, dst = {
 					{x = geo.graph_bg_x, y = geo.graph_bg_y, w = 294, h = 94}
 				}},
@@ -464,7 +465,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 				}},
 			})
 		else
-			util.append_all(skin.dst_panel, {
+			table.append_all(skin.dst_panel, {
 				{id = skin.images.nograph_bg.id, dst = {
 					{x = geo.nograph_bg_x, y = geo.nograph_bg_y, w = 214, h = 86}
 				}},
@@ -480,7 +481,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 			})
 		end
 		local function progressbar(x)
-			util.append_all(skin.dst_fore, {
+			table.append_all(skin.dst_fore, {
 				{id = "progressbg-t", dst = {
 					{x = x + 2, y = geo.progressbg_t_y, w = 28, h = 16}
 				}},
@@ -497,7 +498,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 		end
 	
 		local function loadingbar(x)
-			util.append_all(skin.dst_fore, {
+			table.append_all(skin.dst_fore, {
 				{id = "loading-bg", op = {80}, dst = {
 					{x = x + 104, y = geo.loading_bg_y, w = 456, h = 28}
 				}},
@@ -571,7 +572,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 			loadingbar(0)
 			loadingbar(616)
 		end
-		util.append_all(skin.dst_fore, {
+		table.append_all(skin.dst_fore, {
 			{id = "value-lanecover", op = {270}, dst = {
 				{time = 0, x = geo.lanecover_value_x, y = geo.lanecover_value_y, w = 15, h = 16}
 			}}
@@ -584,11 +585,11 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 		return ext_module.load(skin_type, resolution, src_id_frame, src_id_close, src_id_number)
 	end)
 	if ext_status and ext then
-		util.append_all(skin.images, ext.images)
-		util.append_all(skin.dst_base, ext.dst_base)
-		util.append_all(skin.dst_panel, ext.dst_panel)
-		util.append_all(skin.dst_fore, ext.dst_fore)
-		util.append_all(skin.dst_close, ext.dst_close)
+		table.append_all(skin.images, ext.images)
+		table.append_all(skin.dst_base, ext.dst_base)
+		table.append_all(skin.dst_panel, ext.dst_panel)
+		table.append_all(skin.dst_fore, ext.dst_fore)
+		table.append_all(skin.dst_close, ext.dst_close)
 	end
 
 	return skin

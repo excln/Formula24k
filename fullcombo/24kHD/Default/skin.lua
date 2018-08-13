@@ -1,3 +1,5 @@
+
+require("lua.lua_ext")
 local util = require("lua.play_util")
 local prop = require("lua.play_properties")
 local consts = require("lua.play_consts")

@@ -1,12 +1,14 @@
 
+require("lua.lua_ext")
 local consts = require("lua.play_consts")
+local skin_values = require("lua.skin_values")
 local main = {}
 
 
 local skin_type_map = {}
-skin_type_map[consts.SKIN_TYPE_24K_SP] = 16
-skin_type_map[consts.SKIN_TYPE_24K_DP] = 17
-skin_type_map[consts.SKIN_TYPE_24K_SP_WIDE] = 16
+skin_type_map[consts.SKIN_TYPE_24K_SP] = skin_values.skin_type.PLAY_24KEYS
+skin_type_map[consts.SKIN_TYPE_24K_DP] = skin_values.skin_type.PLAY_24KEYS_DOUBLE
+skin_type_map[consts.SKIN_TYPE_24K_SP_WIDE] = skin_values.skin_type.PLAY_24KEYS
 
 local function skin_name_for(skin_type, resolution)
 	if skin_type == consts.SKIN_TYPE_24K_SP_WIDE then
@@ -20,28 +22,9 @@ local function shows_main_bga(skin_type, resolution)
 	return skin_type ~= consts.SKIN_TYPE_24K_DP
 end
 
-local laser_color_default = {
-	keyflash_color_normal = {
-		r = 31,
-		g = 47,
-		b = 170,
-	},
-	keyflash_color_add = {
-		r = 95,
-		g = 143,
-		b = 255,
-	},
-	keybeam_color_normal = {
-		r = 95,
-		g = 143,
-		b = 255,
-	},
-	keybeam_color_add = {
-		r = 95,
-		g = 143,
-		b = 255,
-	},
-}
+local function is_dp(skin_type)
+	return skin_type == consts.SKIN_TYPE_24K_DP
+end
 
 function main.skin(skin_type, resolution)
 
@@ -58,7 +41,7 @@ function main.skin(skin_type, resolution)
 		close = 1500,
 		fadeout = 1000,
 	}
-	header.property = prop.get_properties(shows_main_bga(skin_type, resolution))
+	header.property = prop.get_properties(is_dp(skin_type), shows_main_bga(skin_type, resolution))
 	header.filepath = prop.get_files()
 
 	local function body()
@@ -128,38 +111,38 @@ function main.skin(skin_type, resolution)
 
 		local frame_module = require("lua.play_frame")
 		local frame = frame_module.load(skin_type, resolution, src_ids.frame, src_ids.frame_close, src_ids.number, 0)
-		util.append_all(skin.image, frame.images)
-		util.append_all(skin.value, frame.values)
-		util.append_all(skin.text, frame.texts)
-		util.append_all(skin.slider, frame.sliders)
-		util.append_all(skin.graph, frame.graphs)
+		table.append_all(skin.image, frame.images)
+		table.append_all(skin.value, frame.values)
+		table.append_all(skin.text, frame.texts)
+		table.append_all(skin.slider, frame.sliders)
+		table.append_all(skin.graph, frame.graphs)
 		skin.gauge.nodes = frame.gauge_nodes
 
 		local lane_module = require("lua.play_lane")
 		local lane = lane_module.load(skin_type, resolution, src_ids.keyboard, src_ids.lane)
-		util.append_all(skin.image, lane.images)
+		table.append_all(skin.image, lane.images)
 
 		local note_module = require("lua.play_note")
 		local note = note_module.load(skin_type, resolution, lane.geometry, src_ids.object, src_ids.lanecover, frame.images.section_line.id)
-		util.append_all(skin.image, note.images)
-		util.append_all(skin.slider, note.sliders)
+		table.append_all(skin.image, note.images)
+		table.append_all(skin.slider, note.sliders)
 		skin.note = note.note
 
 		local judge_module = require("lua.play_judge")
 		local judge = judge_module.load(skin_type, resolution, src_ids.judge)
-		util.append_all(skin.image, judge.images)
-		util.append_all(skin.value, judge.values)
+		table.append_all(skin.image, judge.images)
+		table.append_all(skin.value, judge.values)
 		skin.judge = judge.judges
 
 		local bomb_module = require("lua.play_bomb")
 		local bomb = bomb_module.load(skin_type, resolution, src_ids.bomb, src_ids.hold, lane.geometry)
-		util.append_all(skin.image, bomb.images)
+		table.append_all(skin.image, bomb.images)
 
 		local laser_color_status, laser_color = pcall(function()
 			return dofile(skin_config.get_path(prop.files.laser_color.path))
 		end)
 		if not laser_color_status then
-			laser_color = laser_color_default
+			laser_color = consts.laser_color_default
 		end
 
 		local laser_status, laser = pcall(function()
@@ -167,9 +150,8 @@ function main.skin(skin_type, resolution)
 			return m.load(skin_type, resolution, src_ids.laser, lane.geometry, lane.key_clusters, laser_color)
 		end)
 		if laser_status and laser then
-			util.append_all(skin.image, laser.images)
+			table.append_all(skin.image, laser.images)
 		else
-			--print(laser)
 			laser = {}
 		end
 
@@ -178,9 +160,8 @@ function main.skin(skin_type, resolution)
 			return m.load(skin_type, resolution, src_ids.fullcombo, lane.geometry)
 		end)
 		if fc_status and fc then
-			util.append_all(skin.image, fc.images)
+			table.append_all(skin.image, fc.images)
 		else
-			--print(fc)
 			fc = {}
 		end
 
@@ -193,7 +174,7 @@ function main.skin(skin_type, resolution)
 			})
 		end
 		if prop.current.is_background_stagefile() then
-			util.append_all(skin.destination, {
+			table.append_all(skin.destination, {
 				{id = "background", stretch = 2, dst = {
 					{x = 0, y = 0, w = 1280, h = 720}
 				}},
@@ -203,7 +184,7 @@ function main.skin(skin_type, resolution)
 			})
 		end
 		if prop.current.is_background_bga() then
-			util.append_all(skin.destination, {
+			table.append_all(skin.destination, {
 				{id = "bga", stretch = 2, dst = {
 					{x = 0, y = 0, w = 1280, h = 720}
 				}},
@@ -226,7 +207,7 @@ function main.skin(skin_type, resolution)
 		end
 
 		-- Frame (base) / Main BGA
-		util.append_all(skin.destination, frame.dst_base)
+		table.append_all(skin.destination, frame.dst_base)
 		if shows_main_bga(skin_type, resolution) then
 			local x = frame.geometry.frame_bga_x
 			local y = frame.geometry.frame_bga_y
@@ -251,29 +232,29 @@ function main.skin(skin_type, resolution)
 		end
 
 		-- Lanes
-		util.append_all(skin.destination, lane.dst_keyboard)
-		util.append_all(skin.destination, lane.dst_lane)
+		table.append_all(skin.destination, lane.dst_keyboard)
+		table.append_all(skin.destination, lane.dst_lane)
 
 		-- Keybeams
-		util.append_all(skin.destination, laser.destinations)
+		table.append_all(skin.destination, laser.destinations)
 
 		-- Notes
-		util.append_all(skin.destination, lane.dst_judgeline)
-		util.append_all(skin.destination, note.destinations)
+		table.append_all(skin.destination, lane.dst_judgeline)
+		table.append_all(skin.destination, note.destinations)
 
 		-- Bombs
-		util.append_all(skin.destination, bomb.destinations)
+		table.append_all(skin.destination, bomb.destinations)
 
 		-- Judge
-		util.append_all(skin.destination, judge.destinations)
-		util.append_all(skin.destination, fc.destinations)
+		table.append_all(skin.destination, judge.destinations)
+		table.append_all(skin.destination, fc.destinations)
 
 		-- Panel
-		util.append_all(skin.destination, frame.dst_panel)
+		table.append_all(skin.destination, frame.dst_panel)
 
 		-- Foreground
-		util.append_all(skin.destination, frame.dst_fore)
-		util.append_all(skin.destination, frame.dst_close)
+		table.append_all(skin.destination, frame.dst_fore)
+		table.append_all(skin.destination, frame.dst_close)
 		table.insert(skin.destination, {id = frame.images.fadeout.id, loop = 500, timer = 2, dst = {
 			{time = 0, x = 0, y = 0, w = 1280, h = 720, a = 0},
 			{time = 500, a = 255}

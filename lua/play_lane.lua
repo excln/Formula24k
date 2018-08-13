@@ -1,5 +1,7 @@
 
+require("lua.lua_ext")
 local util = require("lua.play_util")
+local skin_values = require("lua.skin_values")
 local consts = require("lua.play_consts")
 local prop = require("lua.play_properties")
 local lane = {}
@@ -55,7 +57,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 		end,
 	}
 	_t[lane_geometry]()
-	util.append_all(skin.images, {
+	table.append_all(skin.images, {
 		{id = "lane-1pW-t", src = src_id_lane, x = 40, y = lane_src_offset_y + 0, w = 57, h = 40},
 		{id = "lane-1pW-c", src = src_id_lane, x = 40, y = lane_src_offset_y + 40, w = 57, h = 40},
 		{id = "lane-1pW-b", src = src_id_lane, x = 40, y = lane_src_offset_y + 80, w = 57, h = 40},
@@ -172,7 +174,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 	local lane_opacity_255 = prop.current.get_lane_opacity_255()
 
 	local function add_lane_dst(x, w, name)
-		util.append_all(skin.dst_lane, {
+		table.append_all(skin.dst_lane, {
 			{id = "lane-opaque-"..name.."-t", dst = {
 				{x = x, y = skin.geometry.lane_t_y, w = w, h = 320, a = lane_opacity_255 },
 			}},
@@ -200,7 +202,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 	end
 
 	local function add_octave(x, k)
-		util.append_all(skin.dst_keyboard, {
+		table.append_all(skin.dst_keyboard, {
 			{id = "kb-octave", dst = {
 				{ x = x, y = skin.geometry.keyboard_y, w = skin.geometry.octave_interval + 1, h = 128 }
 			}},
@@ -212,7 +214,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 			table.insert(skin.geometry.notes_w, skin.geometry.notes_octave_w[i])
 			table.insert(dst_keypress_on_unsorted, {
 				id = id_keypress(i),
-				timer = util.timer_key_on(k + i - 1),
+				timer = skin_values.timer_key_on(k + i - 1),
 				loop = 30,
 				dst = {
 					{
@@ -228,7 +230,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 			})
 			table.insert(dst_keypress_off_unsorted, {
 				id = id_keypress(i),
-				timer = util.timer_key_off(k + i - 1),
+				timer = skin_values.timer_key_off(k + i - 1),
 				loop = 90,
 				dst = {
 					{
@@ -261,52 +263,52 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 	end
 
 	local function add_keypress_wheel(x, k)
-		util.append_all(skin.dst_keyboard, {
+		table.append_all(skin.dst_keyboard, {
 			{
-				id = "keypress-su1", timer = util.timer_key_on(k), loop = -1,
+				id = "keypress-su1", timer = skin_values.timer_key_on(k), loop = -1,
 				dst = { keyflash_wheel_rect(x, 0), {time = 30} }
 			},
 			{
-				id = "keypress-su2", timer = util.timer_key_on(k), loop = -1,
+				id = "keypress-su2", timer = skin_values.timer_key_on(k), loop = -1,
 				dst = { keyflash_wheel_rect(x, 30), {time = 60} }
 			},
 			{
-				id = "keypress-su3", timer = util.timer_key_on(k), loop = 60,
+				id = "keypress-su3", timer = skin_values.timer_key_on(k), loop = 60,
 				dst = { keyflash_wheel_rect(x, 60) }
 			},
 			{
-				id = "keypress-sd1", timer = util.timer_key_on(k + 1), loop = -1,
+				id = "keypress-sd1", timer = skin_values.timer_key_on(k + 1), loop = -1,
 				dst = { keyflash_wheel_rect(x, 0), {time = 30} }
 			},
 			{
-				id = "keypress-sd2", timer = util.timer_key_on(k + 1), loop = -1,
+				id = "keypress-sd2", timer = skin_values.timer_key_on(k + 1), loop = -1,
 				dst = { keyflash_wheel_rect(x, 30), {time = 60} }
 			},
 			{
-				id = "keypress-sd3", timer = util.timer_key_on(k + 1), loop = 60,
+				id = "keypress-sd3", timer = skin_values.timer_key_on(k + 1), loop = 60,
 				dst = { keyflash_wheel_rect(x, 60) }
 			},
 			{
-				id = "keypress-su2", timer = util.timer_key_off(k), loop = -1,
+				id = "keypress-su2", timer = skin_values.timer_key_off(k), loop = -1,
 				dst = { keyflash_wheel_rect(x, 0), {time = 30} }
 			},
 			{
-				id = "keypress-su1", timer = util.timer_key_off(k), loop = -1,
+				id = "keypress-su1", timer = skin_values.timer_key_off(k), loop = -1,
 				dst = { keyflash_wheel_rect(x, 30), {time = 60} }
 			},
 			{
-				id = "keypress-sd2", timer = util.timer_key_off(k + 1), loop = -1,
+				id = "keypress-sd2", timer = skin_values.timer_key_off(k + 1), loop = -1,
 				dst = { keyflash_wheel_rect(x, 0), {time = 30} }
 			},
 			{
-				id = "keypress-sd1", timer = util.timer_key_off(k + 1), loop = -1,
+				id = "keypress-sd1", timer = skin_values.timer_key_off(k + 1), loop = -1,
 				dst = { keyflash_wheel_rect(x, 30), {time = 60} }
 			},
 		})
 	end
 
 	local function add_left_wheel(x, k)
-		util.append_all(skin.dst_keyboard, {
+		table.append_all(skin.dst_keyboard, {
 			{id = "kb-1pL", dst = {
 				{x = x - 40, y = skin.geometry.keyboard_y, w = 97, h = 128}
 			}},
@@ -321,7 +323,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 	end
 
 	local function add_right_wheel(x, k)
-		util.append_all(skin.dst_keyboard, {
+		table.append_all(skin.dst_keyboard, {
 			{id = "kb-2pR", dst = {
 				{x = x - 1, y = skin.geometry.keyboard_y, w = 97, h = 128}
 			}},
@@ -336,7 +338,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 	end
 
 	local function judgeline_key(position_x, octave)
-		util.append_all(skin.dst_judgeline, {
+		table.append_all(skin.dst_judgeline, {
 			{id = "judgeline-key", offset = 3, dst = {
 				{x = position_x + 2, y = skin.geometry.keyboard_y + 59, w = 525, h = 8}
 			}},
@@ -366,7 +368,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 			end
 			add_left_wheel(cluster.position_x, k)
 			k = k + 2
-			util.append_all(skin.dst_keyboard, {
+			table.append_all(skin.dst_keyboard, {
 				{id = "kb-1pR", dst = {
 					{x = x, y = skin.geometry.keyboard_y, w = 21, h = 128}
 				}},
@@ -385,7 +387,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 			end
 			add_right_wheel(x, k)
 			k = k + 2
-			util.append_all(skin.dst_keyboard, {
+			table.append_all(skin.dst_keyboard, {
 				{id = "kb-2pL", dst = {
 					{x = cluster.position_x - 21, y = skin.geometry.keyboard_y, w = 21, h = 128}
 				}},

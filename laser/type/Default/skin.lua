@@ -1,4 +1,7 @@
+
+require("lua.lua_ext")
 local util = require("lua.play_util")
+local skin_values = require("lua.skin_values")
 local prop = require("lua.play_properties")
 local consts = require("lua.play_consts")
 local ext = {}
@@ -93,7 +96,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	local function keyflash_on(k, id, rect, blend, color)
 		return generic_dst(
-			id, util.timer_key_on(k),
+			id, skin_values.timer_key_on(k),
 			params.keyflash_on_duration, blend,
 			params.keyflash_alpha_max / 2, params.keyflash_alpha_max,
 			rect.x, rect.y, rect.w, rect.h, rect.h, color)
@@ -101,7 +104,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	local function keyflash_off(k, id, rect, blend, color)
 		return generic_dst(
-			id, util.timer_key_off(k),
+			id, skin_values.timer_key_off(k),
 			params.keyflash_off_duration, blend,
 			params.keyflash_alpha_max, 0,
 			rect.x, rect.y, rect.w, rect.h, rect.h, color)
@@ -131,7 +134,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	local function keybeam_on(k, id, xw, color)
 		return generic_dst(
-			id, util.timer_key_on(k),
+			id, skin_values.timer_key_on(k),
 			params.keybeam_on_duration, 1,
 			params.keybeam_alpha_max, params.keybeam_alpha_max,
 			xw.x, lane_geometry.keyboard_y + 116, xw.w, 240, 424, color)
@@ -139,7 +142,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	local function keybeam_off(k, id, xw, color)
 		return generic_dst(
-			id, util.timer_key_off(k),
+			id, skin_values.timer_key_off(k),
 			params.keybeam_off_duration, 1,
 			params.keybeam_alpha_max, 0,
 			xw.x, lane_geometry.keyboard_y + 116, xw.w, 424, 120, color)
@@ -147,7 +150,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	local function keybeam_tail_on(k, id, xw, color)
 		return generic_dst(
-			id, util.timer_key_on(k),
+			id, skin_values.timer_key_on(k),
 			params.keybeam_on_duration, 1,
 			params.keybeam_alpha_max, params.keybeam_alpha_max,
 			xw.x, lane_geometry.keyboard_y + 60, xw.w, 56, 56, color)
@@ -155,7 +158,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	local function keybeam_tail_off(k, id, xw, color)
 		return generic_dst(
-			id, util.timer_key_off(k),
+			id, skin_values.timer_key_off(k),
 			params.keybeam_off_duration, 1,
 			params.keybeam_alpha_max, 0,
 			xw.x, lane_geometry.keyboard_y + 60, xw.w, 56, 56, color)
@@ -217,19 +220,19 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 	local white = { r = 255, g = 255, b = 255 }
 
 	local function add_wheel(x, k)
-		util.append_all(skin.dst_layers.flash_normal, {
+		table.append_all(skin.dst_layers.flash_normal, {
 			keyflash_on(k, "keyflash-su", keyflash_wheel_rect(x), 1, white),
 			keyflash_off(k, "keyflash-su", keyflash_wheel_rect(x), 1, white),
 			keyflash_on(k+1, "keyflash-sd", keyflash_wheel_rect(x), 1, white),
 			keyflash_off(k+1, "keyflash-sd", keyflash_wheel_rect(x), 1, white),
 		})
-		util.append_all(skin.dst_layers.flash_additive, {
+		table.append_all(skin.dst_layers.flash_additive, {
 			keyflash_on(k, "keyflash-su", keyflash_wheel_rect(x), 2, white),
 			keyflash_off(k, "keyflash-su", keyflash_wheel_rect(x), 2, white),
 			keyflash_on(k+1, "keyflash-sd", keyflash_wheel_rect(x), 2, white),
 			keyflash_off(k+1, "keyflash-sd", keyflash_wheel_rect(x), 2, white),
 		})
-		util.append_all(skin.dst_layers.beam, {
+		table.append_all(skin.dst_layers.beam, {
 			keybeam_on(k, "keybeam-su", keybeam_wheel_xw(x, i), white),
 			keybeam_off(k, "keybeam-su", keybeam_wheel_xw(x, i), white),
 			keybeam_on(k+1, "keybeam-sd", keybeam_wheel_xw(x, i), white),
@@ -239,9 +242,9 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 			keybeam_tail_on(k+1, "keybeam-tail-sd", keybeam_wheel_xw(x, i), white),
 			keybeam_tail_off(k+1, "keybeam-tail-sd", keybeam_wheel_xw(x, i), white),
 		})
-		util.append_all(skin.dst_layers.wheel_fx, {
+		table.append_all(skin.dst_layers.wheel_fx, {
 			{id = "keybeam-su-w",
-				timer = util.timer_key_on(k),
+				timer = skin_values.timer_key_on(k),
 				loop = -1, blend = 2, offset = 3,
 				dst = {
 					{ time = 0, x = x + lane_geometry.note_wheel_x, y = lane_geometry.keyboard_y + 60, w = lane_geometry.note_wheel_w, h = 390, a = 31 },
@@ -249,7 +252,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 				}
 			},
 			{id = "keybeam-sd-w",
-				timer = util.timer_key_on(k+1),
+				timer = skin_values.timer_key_on(k+1),
 				loop = -1, blend = 2, offset = 3,
 				dst = {
 					{ time = 0, x = x + lane_geometry.note_wheel_x, y = lane_geometry.keyboard_y + 60, w = lane_geometry.note_wheel_w, h = 390, a = 31 },
@@ -284,7 +287,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	skin.destinations = {}
 	for layer_name, dsts in pairs(skin.dst_layers) do
-		util.append_all(skin.destinations, dsts)
+		table.append_all(skin.destinations, dsts)
 	end
 
 	return skin

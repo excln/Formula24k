@@ -1,4 +1,5 @@
 
+require("lua.lua_ext")
 local consts = require("lua.play_consts")
 local prop = {}
 
@@ -35,8 +36,28 @@ function prop.current.get_play_side_v()
 	end
 end
 
+prop.properties.wheel_position = {
+	name = "Wheel Position",
+	item = {
+		{name = "Left", op = 945},
+		{name = "Right", op = 946}
+	},
+	def = "Left"
+}
+
+function prop.current.get_wheel_position()
+	local op = skin_config.option[prop.properties.wheel_position.name]
+	if op == 945 then
+		return 1
+	elseif op == 946 then
+		return 2
+	else
+		return 1
+	end
+end
+
 prop.properties.background = {
-	name = "Background",
+	name = "Background Type",
 	item = {
 		{name = "Generic Image", op = 901},
 		{name = "Stagefile", op = 902},
@@ -204,16 +225,24 @@ prop.files.judge = {name = "Judge", path = "judge/*.png", def =  "Default"}
 prop.files.lanecover = {name = "Lane Cover", path = "lanecover/24kHD/*.png", def =  "Default"}
 prop.files.fullcombo = {name = "Full Combo", path = "fullcombo/24kHD/*", def = "Default"}
 
-function prop.get_properties(shows_main_bga)
+function prop.get_properties(dp, shows_main_bga)
 	local p = {
-		prop.properties.play_side,
+		prop.properties.play_side
+	}
+
+	if not dp then
+		table.insert(p, prop.properties.wheel_position)
+	end
+
+	table.append_all(p, {
 		prop.properties.background,
 		prop.properties.lane_opacity,
 		prop.properties.lane_geometry,
 		prop.properties.judge_detail,
 		prop.properties.score_graph,
-		prop.properties.sub_bga_size,
-	}
+		prop.properties.sub_bga_size
+	})
+	
 	if shows_main_bga then
 		table.insert(p, prop.properties.title_display)
 		table.insert(p, prop.properties.main_bga_size)

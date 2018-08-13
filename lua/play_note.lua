@@ -1,4 +1,5 @@
 
+require("lua.lua_ext")
 local util = require("lua.play_util")
 local consts = require("lua.play_consts")
 local prop = require("lua.play_properties")
@@ -32,19 +33,19 @@ function note.load(skin_type, resolution, lane_geometry, src_id_note, src_id_lan
 		}
 	end
 	
-	util.append_all(skin.images, images_note_wb("note", 0, 12))
-	util.append_all(skin.images, images_note_wb("lne", 16, 12))
-	util.append_all(skin.images, images_note_wb("lns", 30, 12))
-	util.append_all(skin.images, images_note_wb("lnb", 44, 6))
-	util.append_all(skin.images, images_note_wb("lna", 52, 1))
-	util.append_all(skin.images, images_note_wb("hcne", 60, 12))
-	util.append_all(skin.images, images_note_wb("hcns", 74, 12))
-	util.append_all(skin.images, images_note_wb("hcnb", 88, 1))
-	util.append_all(skin.images, images_note_wb("hcna", 96, 1))
-	util.append_all(skin.images, images_note_wb("hcnd", 104, 1))
-	util.append_all(skin.images, images_note_wb("hcnr", 112, 1))
-	util.append_all(skin.images, images_note_wb("mine", 128, 12))
-	util.append_all(skin.images, {
+	table.append_all(skin.images, images_note_wb("note", 0, 12))
+	table.append_all(skin.images, images_note_wb("lne", 16, 12))
+	table.append_all(skin.images, images_note_wb("lns", 30, 12))
+	table.append_all(skin.images, images_note_wb("lnb", 44, 6))
+	table.append_all(skin.images, images_note_wb("lna", 52, 1))
+	table.append_all(skin.images, images_note_wb("hcne", 60, 12))
+	table.append_all(skin.images, images_note_wb("hcns", 74, 12))
+	table.append_all(skin.images, images_note_wb("hcnb", 88, 1))
+	table.append_all(skin.images, images_note_wb("hcna", 96, 1))
+	table.append_all(skin.images, images_note_wb("hcnd", 104, 1))
+	table.append_all(skin.images, images_note_wb("hcnr", 112, 1))
+	table.append_all(skin.images, images_note_wb("mine", 128, 12))
+	table.append_all(skin.images, {
 		{id = "note-su", src = src_id_note, x = 0, y = 160, w = 55, h = 16},
 		{id = "note-sd", src = src_id_note, x = 60, y = 160, w = 55, h = 16},
 		{id = "mine-su", src = src_id_note, x = 0, y = 178, w = 55, h = 16},
@@ -128,7 +129,7 @@ function note.load(skin_type, resolution, lane_geometry, src_id_note, src_id_lan
 		{ id = skin.note.id }
 	}
 	for i, group in ipairs(lane_geometry.groups) do
-		util.append_all(skin.destinations, {
+		table.append_all(skin.destinations, {
 			{id = "lanecover", dst = {
 				{x = group.x, y = lane_geometry.note_y + 480, w = group.w, h = 660}
 			}},

@@ -1,4 +1,7 @@
+
+require("lua.lua_ext")
 local util = require("lua.play_util")
+local skin_values = require("lua.skin_values")
 local prop = require("lua.play_properties")
 local consts = require("lua.play_consts")
 local ext = {}
@@ -64,7 +67,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	local function keybeam_on(k, id, xw, color)
 		return generic_dst(
-			id, util.timer_key_on(k),
+			id, skin_values.timer_key_on(k),
 			params.keybeam_on_duration, 1,
 			params.keybeam_alpha_max, params.keybeam_alpha_max,
 			xw.x, lane_geometry.keyboard_y + 60, xw.w, 240, 480, color_lighter(color))
@@ -72,7 +75,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 
 	local function keybeam_off(k, id, xw, color)
 		return generic_dst(
-			id, util.timer_key_off(k),
+			id, skin_values.timer_key_off(k),
 			params.keybeam_off_duration, 1,
 			params.keybeam_alpha_max, 0,
 			xw.x, lane_geometry.keyboard_y + 60, xw.w, 480, 120, color_lighter(color))
@@ -108,7 +111,7 @@ function ext.load(skin_type, resolution, src_id_laser, lane_geometry, key_cluste
 	local white = { r = 255, g = 255, b = 255 }
 
 	local function add_wheel(x, k)
-		util.append_all(skin.destinations, {
+		table.append_all(skin.destinations, {
 			keybeam_on(k, "keybeam-su", keybeam_wheel_xw(x, i), white),
 			keybeam_off(k, "keybeam-su", keybeam_wheel_xw(x, i), white),
 			keybeam_on(k+1, "keybeam-sd", keybeam_wheel_xw(x, i), white),
