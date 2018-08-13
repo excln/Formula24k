@@ -115,7 +115,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 
 	skin.key_clusters = {}
 	_t = {
-		[consts.SKIN_TYPE_24K_SP] = function()
+		[consts.SKIN_TYPE.PLAY_24K_SP] = function()
 			if prop.current.get_play_side_h() == 1 then
 				skin.key_clusters = {
 					{
@@ -134,7 +134,7 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 				}
 			end
 		end,
-		[consts.SKIN_TYPE_24K_DP] = function()
+		[consts.SKIN_TYPE.PLAY_24K_DP] = function()
 			skin.key_clusters = {
 				{
 					position_x = 40,
@@ -147,11 +147,6 @@ function lane.load(skin_type, resolution, src_id_keyboard, src_id_lane)
 					octave = 2,
 				}
 			}
-		end,
-		[consts.SKIN_TYPE_24K_SP_WIDE] = function()
-			if prop.current.get_play_side_h() == 1 then
-			else
-			end
 		end,
 	}
 	_t[skin_type]()

@@ -119,7 +119,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 	skin.dst_fore = {}
 	skin.dst_close = {}
 
-	if skin_type == consts.SKIN_TYPE_24K_SP then
+	if skin_type == consts.SKIN_TYPE.PLAY_24K_SP then
 		local geo = skin.geometry
 		if prop.current.get_play_side_v() == 1 then
 			geo.frame_main_y = 0
@@ -149,7 +149,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 				{id = skin.images.frame_2pL.id,  dst = {{ x = 0,    y = geo.frame_main_y, w = 80, h = 540 }}},
 			})
 		end
-	elseif skin_type == consts.SKIN_TYPE_24K_DP then
+	elseif skin_type == consts.SKIN_TYPE.PLAY_24K_DP then
 		local y
 		if prop.current.get_play_side_v() == 1 then
 			y = 0
@@ -306,7 +306,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 			geo.jc_number_x = 906
 			geo.lanecover_value_x = 598
 		end
-		if skin_type == consts.SKIN_TYPE_24K_DP then
+		if skin_type == consts.SKIN_TYPE.PLAY_24K_DP then
 			geo.lanecover_value_x = 617
 		end
 
@@ -558,7 +558,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 			})
 		end
 	
-		if skin_type == consts.SKIN_TYPE_24K_SP then
+		if skin_type == consts.SKIN_TYPE.PLAY_24K_SP then
 			if prop.current.get_play_side_h() == 1 then
 				progressbar(0)
 				loadingbar(0)
@@ -566,7 +566,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 				progressbar(1250)
 				loadingbar(616)
 			end
-		elseif skin_type == consts.SKIN_TYPE_24K_DP then
+		elseif skin_type == consts.SKIN_TYPE.PLAY_24K_DP then
 			progressbar(0)
 			progressbar(1250)
 			loadingbar(0)

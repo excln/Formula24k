@@ -1,13 +1,16 @@
 
 return {
-	SKIN_TYPE_24K_SP = 1,
-	SKIN_TYPE_24K_DP = 2,
-	SKIN_TYPE_24K_SP_WIDE = 3,
+	SKIN_TYPE = {
+		PLAY_24K_SP = 1,
+		PLAY_24K_DP = 2,
+	},
 	
-	RESOLUTION_HD = {
-		name = "HD",
-		width = 1280,
-		height = 720,
+	RESOLUTION = {
+		HD = {
+			name = "HD",
+			width = 1280,
+			height = 720,
+		},
 	},
 
 	LANE_GEOMETRY = {
@@ -17,7 +20,7 @@ return {
 		SEPARATE = 4,
 	},
 
-	laser_color_default = {
+	LASER_COLOR_DEFAULT = {
 		keyflash_color_normal = {
 			r = 31,
 			g = 47,

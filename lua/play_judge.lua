@@ -20,7 +20,7 @@ function judge.load(skin_type, resolution, src_id_judge)
 	}
 
 	local judges
-	if skin_type == consts.SKIN_TYPE_24K_SP then
+	if skin_type == consts.SKIN_TYPE.PLAY_24K_SP then
 		if prop.current.get_play_side_h() == 1 then
 			judges = {
 				{ id = "judge1", index = 0, x = 212 },
@@ -30,12 +30,11 @@ function judge.load(skin_type, resolution, src_id_judge)
 				{ id = "judge1", index = 0, x = 828 },
 			}
 		end
-	elseif skin_type == consts.SKIN_TYPE_24K_DP then
+	elseif skin_type == consts.SKIN_TYPE.PLAY_24K_DP then
 		judges = {
 			{ id = "judge1", index = 0, x = 212 },
 			{ id = "judge2", index = 1, x = 828 },
 		}
-	elseif skin_type == consts.SKIN_TYPE_24K_SP_WIDE then
 	end
 
 	local judge_y

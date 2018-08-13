@@ -14,9 +14,9 @@ function bomb.load(skin_type, resolution, src_id_bomb, src_id_hold, lane_geometr
 
 	local keys_count
 	local key_types = {}
-	if skin_type == consts.SKIN_TYPE_24K_SP or skin_type == consts.SKIN_TYPE_24K_SP_WIDE then
+	if skin_type == consts.SKIN_TYPE.PLAY_24K_SP then
 		keys_count = 26
-	elseif skin_type == consts.SKIN_TYPE_24K_DP then
+	elseif skin_type == consts.SKIN_TYPE.PLAY_24K_DP then
 		keys_count = 52
 	end
 

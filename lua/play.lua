@@ -6,24 +6,19 @@ local main = {}
 
 
 local skin_type_map = {}
-skin_type_map[consts.SKIN_TYPE_24K_SP] = skin_values.skin_type.PLAY_24KEYS
-skin_type_map[consts.SKIN_TYPE_24K_DP] = skin_values.skin_type.PLAY_24KEYS_DOUBLE
-skin_type_map[consts.SKIN_TYPE_24K_SP_WIDE] = skin_values.skin_type.PLAY_24KEYS
+skin_type_map[consts.SKIN_TYPE.PLAY_24K_SP] = skin_values.skin_type.PLAY_24KEYS
+skin_type_map[consts.SKIN_TYPE.PLAY_24K_DP] = skin_values.skin_type.PLAY_24KEYS_DOUBLE
 
 local function skin_name_for(skin_type, resolution)
-	if skin_type == consts.SKIN_TYPE_24K_SP_WIDE then
-		return "Formula ".. resolution.name .." Wide"
-	else
-		return "Formula ".. resolution.name
-	end
+	return "Formula ".. resolution.name
 end
 
 local function shows_main_bga(skin_type, resolution)
-	return skin_type ~= consts.SKIN_TYPE_24K_DP
+	return skin_type ~= consts.SKIN_TYPE.PLAY_24K_DP
 end
 
 local function is_dp(skin_type)
-	return skin_type == consts.SKIN_TYPE_24K_DP
+	return skin_type == consts.SKIN_TYPE.PLAY_24K_DP
 end
 
 function main.skin(skin_type, resolution)
@@ -142,7 +137,7 @@ function main.skin(skin_type, resolution)
 			return dofile(skin_config.get_path(prop.files.laser_color.path))
 		end)
 		if not laser_color_status then
-			laser_color = consts.laser_color_default
+			laser_color = consts.LASER_COLOR_DEFAULT
 		end
 
 		local laser_status, laser = pcall(function()

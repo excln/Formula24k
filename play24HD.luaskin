@@ -1,6 +1,6 @@
 local consts = require("lua.play_consts")
 local main = require("lua.play")
-local skin = main.skin(consts.SKIN_TYPE_24K_SP, consts.RESOLUTION_HD)
+local skin = main.skin(consts.SKIN_TYPE.PLAY_24K_SP, consts.RESOLUTION.HD)
 if skin_config then
 	return skin.body()
 else
