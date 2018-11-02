@@ -5,13 +5,13 @@ a playing skin for beatoraja
 
 ## Requirements
 
-* [beatoraja](https://github.com/exch-bms2/beatoraja) 0.5.7 or later (0.5.5, Chroma 0.5.6 is not supported)
+* [beatoraja](https://github.com/exch-bms2/beatoraja) 0.6 or later
 
 
 ## Skin Types
 
 * Formula HD 24key
-* Formula HD 24keyDP
+* Formula HD 48key (24key DP)
 
 
 ## Customization
