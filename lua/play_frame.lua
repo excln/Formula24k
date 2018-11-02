@@ -385,7 +385,7 @@ function frame.load(skin_type, resolution, src_id_frame, src_id_close, src_id_nu
 			{id = skin.values.duration.id, dst = {
 				{x = geo.duration_x, y = geo.hispeed_y, w = 15, h = 16}
 			}},
-			{id = "gauge", blend = 2, dst = {
+			{id = "gauge", dst = {
 				{x = geo.gauge_x, y = geo.gauge_y, w = geo.gauge_w, h = 28}
 			}},
 			{id = "percent", dst = {{ x = geo.gauge_percent_x, y = geo.gauge_percent_y, w = 15, h = 16} }},
